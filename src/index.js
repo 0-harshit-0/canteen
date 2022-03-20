@@ -1,27 +1,20 @@
-import React, {useState} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import {Nav} from './components/header.js';
-import {SearchBar} from './components/search.js';
-import {Products} from './components/items.js';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './index.css';
 
-function FilterProducts(props) {
-  const [query, setQuery] = useState("");
-  return (
-    <>
-      <SearchBar setQuery={setQuery} />
-      <br />
-      <Products searchQuery={query} />
-    </>
-  );
-}
+import {Nav} from './components/header.js';
+import {Home} from './pages/home.js';
+import {Contact} from './pages/contact.js';
+
 function App(props) {
   return (
-    <>
-      <Nav />
-      <br />
-      <FilterProducts />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<Home />} />
+        <Route path="contact" element={<Contact />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

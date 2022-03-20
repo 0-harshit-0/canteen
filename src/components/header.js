@@ -1,22 +1,28 @@
 import React from 'react';
+import { Outlet, Link } from "react-router-dom";
 
-const navs = ["home", "my order", "contact", "feedback"];
+const navs = [
+	{name:"home", path:"/"},
+	{name:"my order", path:"/order"},
+	{name:"contact", path:"/contact"},
+	{name:"feedback", path:"/feedback"}
+];
 function Right(props) {
 	return (
-		<a href={props.name} alt={props.name}>
+		<Link to={props.path}>
 			{props.name}
-		</a>
+		</Link>
 	);
 }
 function Nav(props) {
 	return(
 		<header className="containers">
-			<a href="/">
+			<Link to="/">
 				Canteen
-			</a>
+			</Link>
 			<nav>
 				{
-					navs.map(z => <Right key={z} name={z} />)
+					navs.map(z => <Right key={z.name} name={z.name} path={z.path} />)
 				}
 			</nav>
 		</header>

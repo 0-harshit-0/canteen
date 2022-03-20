@@ -13,7 +13,7 @@ function FilterProducts(props) {
     </>
   );
 }
-function Contact(props) {
+function Home(props) {
   return (
     <>
       <Nav />
@@ -23,4 +23,4 @@ function Contact(props) {
   );
 }
 
-export {Contact};
+export {Home};

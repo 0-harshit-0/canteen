@@ -47,6 +47,7 @@ function Products(props) {
 					if(z.name.match(new RegExp(props.searchQuery, "i")) && z.in_stock) {
 						return <ProductCard key={i} name={z.name} small={z.small_price} medium={z.medium_price} large={z.large_price} />
 					}
+					return '';
 				})
 			}
 		</div>
