@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
 import './index.css';
 
-import {Nav} from './components/header.js';
 import {Home} from './pages/home.js';
 import {Contact} from './pages/contact.js';
 

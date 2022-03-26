@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Rambla&display=swap');
 
+:root {
+  --lb: #222;
+  --gr: #636363;
+}
 ::selection {
   color: white;
   background: grey;
@@ -7,6 +11,7 @@
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
+  color: var(--lb);
 }
 html {
   -moz-text-size-adjust: none;
@@ -128,4 +133,49 @@ header > nav > a {
 }
 .productInfo .price {
   justify-self: end;
+}
+
+
+/* ------------------------contact----------------------- */
+.contactCont {
+  display: flex;
+  justify-content: space-around;
+}
+
+#mapContact {
+  border: 0;
+  border-radius: 10px;
+}
+
+.contactDetailsCont {
+  display: flex;
+  flex-direction: column;
+
+  width: 35%;
+}
+
+.contactDetailsCont > .contactHeading {
+  text-align: center;
+  font-size: 40px;
+  line-height: 1.5;
+}
+
+.contactDetailsCont > .contactitem {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10%;
+  font-size: 17px;
+  margin-block: 13px;
+}
+
+.contactitem > .contactData > span > a {
+  color: var(--gr);
+}
+.contactitem > .contactData > span:nth-child(2) {
+  margin-inline-start: 5%;
+}
+
+.contactDetailsCont > .bi {
+  cursor: pointer;
 }

@@ -1,11 +1,11 @@
 import React from 'react';
-import { Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const navs = [
 	{name:"home", path:"/"},
 	{name:"my order", path:"/order"},
-	{name:"contact", path:"/contact"},
-	{name:"feedback", path:"/feedback"}
+	{name:"contact", path:"/contact"},/*
+	{name:"feedback", path:"/feedback"}*/
 ];
 function Right(props) {
 	return (
@@ -16,6 +16,7 @@ function Right(props) {
 }
 function Nav(props) {
 	return(
+		<>
 		<header className="containers">
 			<Link to="/">
 				Canteen
@@ -26,6 +27,9 @@ function Nav(props) {
 				}
 			</nav>
 		</header>
+    	<br />
+    	<br />
+    	</>
 	);
 }
 
