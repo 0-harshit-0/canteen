@@ -5,6 +5,7 @@ import './index.css';
 
 import {Home} from './pages/home.js';
 import {Contact} from './pages/contact.js';
+import {Order} from './pages/order.js';
 
 function App(props) {
   return (
@@ -12,6 +13,7 @@ function App(props) {
       <Routes>
         <Route index element={<Home />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="order" element={<Order />} />
       </Routes>
     </BrowserRouter>
   );

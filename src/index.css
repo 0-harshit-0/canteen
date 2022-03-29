@@ -63,6 +63,9 @@ a {
 .containers {
   padding-inline: 7%;
 }
+.bi {
+  cursor: pointer;
+}
 
 /* ----------------------------header---------------------------- */
 header {
@@ -82,6 +85,30 @@ header > nav > a {
   font-size: 1.8rem;
 }
 
+.bi-cart3 {
+  position: fixed;
+  top: calc(90% - 10px);
+  left: calc(95% - 10px);
+
+  padding: 10px;
+  border-radius: 20px;
+  background: lightgreen;
+}
+.cartCount {
+  display: grid;
+  place-items: center;
+
+  position: fixed;
+  top: calc(88% - 10px);
+  left: calc(98% - 10px);
+
+  border-radius: 100%;
+  background: lightgreen;
+  color: black;
+  font-weight: bold;
+  height: 30px;
+  aspect-ratio: 1;
+}
 /* --------------------------searchBar----------------------------- */
 .searchBarCont {
 }
@@ -114,7 +141,7 @@ header > nav > a {
 }
 .productInfo {
   display: grid;
-  grid-template-rows: 1fr repeat(3, .6fr);
+  grid-template-rows: .2fr .4fr .2fr .2fr;
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
 
@@ -123,18 +150,80 @@ header > nav > a {
   font-size: 100%;
 }
 .productInfo > h3 {
-  grid-column: 1 / span 2;
   font-size: 2em;
   margin-block-end: 4%;
 }
-.productInfo > span {
-  padding-inline: 10px;
+.productInfo > p {
+  grid-column: 1 / span 2;
+  word-break: break-all;
   font-size: 1.4em;
-}
-.productInfo .price {
-  justify-self: end;
+  margin-block-end: 5%;
 }
 
+.productInfo > select {
+  padding: 1px;
+  border: solid 1px lightgrey;
+  width: 70%;
+  border-radius: 5px;
+}
+.productInfo > input {
+  padding: 0;
+  padding-inline-start: 5px;
+  border: solid 1px lightgrey;
+  justify-self: end;
+  width: 80%;
+  border-radius: 5px;
+}
+
+.productInfo > button {
+  grid-column: 1 / span 2;
+  margin-block-start: 10px;
+  border-radius: 5px;
+  border: solid 1px lightgrey;
+}
+
+/* ------------------------order----------------------- */
+.orderCont {
+  display: grid;
+  grid-template-rows: repeat(auto-fit, .5fr);
+}
+.orderCont > .orderCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-block: .8%;
+  padding-inline: 1%;
+  margin-block: .5%;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
+}
+.orderCard > .orderImg {
+  width: 6%;
+}
+.orderCard > .orderImg > img {
+  opacity: 0.8;
+  border-radius: 10px;
+}
+
+.orderCard > .orderDetail {
+  display: flex;
+  justify-content: space-between;
+  
+  width: 60%;
+  font-size: 1.3rem;
+}
+
+
+.orderCard > .orderOptions {
+  display: flex;
+  width: max-content;
+}
+.orderOptions button {
+  background: transparent;
+  border: 0;
+  aspect-ratio: 1;
+}
 
 /* ------------------------contact----------------------- */
 .contactCont {
@@ -174,8 +263,4 @@ header > nav > a {
 }
 .contactitem > .contactData > span:nth-child(2) {
   margin-inline-start: 5%;
-}
-
-.contactDetailsCont > .bi {
-  cursor: pointer;
 }

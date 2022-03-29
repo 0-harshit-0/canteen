@@ -1,5 +1,7 @@
 import React from 'react';
 import {Nav} from '../components/header.js';
+import {Cart} from '../components/cart.js';
+
 
 function Map(props) {
   return (
@@ -93,6 +95,7 @@ function Contact(props) {
           <Contactdetails />
         </section>
       </div>
+      <Cart />
     </>
   );
 }
