@@ -62,7 +62,7 @@ function Order(props) {
     <>
       <Nav />
       <OrderCont />
-      <Cart />
+      <Cart cartLen={props.count} />
     </>
   );
 }

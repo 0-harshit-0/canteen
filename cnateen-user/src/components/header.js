@@ -23,7 +23,7 @@ function Nav(props) {
 			</Link>
 			<nav>
 				{
-					navs.map(z => <Right key={z.name} name={z.name} path={z.path} />)
+					navs.map(z => <Right key={z.name} name={z.name} path={z.path} count={props.count} />)
 				}
 			</nav>
 		</header>

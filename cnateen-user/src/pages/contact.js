@@ -95,7 +95,7 @@ function Contact(props) {
           <Contactdetails />
         </section>
       </div>
-      <Cart />
+      <Cart cartLen={props.count} />
     </>
   );
 }
