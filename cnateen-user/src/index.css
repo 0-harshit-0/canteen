@@ -176,11 +176,6 @@ header > nav > a {
   
   width: 60%;
   font-size: 1.3rem;
-  
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;  
-  overflow: hidden;
 }
 
 .cartCard .cartOptions {
@@ -215,7 +210,7 @@ header > nav > a {
   background: transparent;
 }
 /* -----------------------pages--------------------------- */
-/* -----=------searchBar---------------- */
+/* -----------home---------------- */
 .searchBarCont {
 }
 .searchBarCont > #search {
@@ -227,6 +222,7 @@ header > nav > a {
   border-radius: 10px;
   font-size: 1.4rem;
 }
+
 
 .productCont {
   display: grid;
@@ -252,6 +248,7 @@ header > nav > a {
 
   margin-block-start: 2%;
   font-size: 100%;
+  padding-inline: 3%;
 }
 .productInfo > h3 {
   font-size: 2em;
@@ -267,7 +264,7 @@ header > nav > a {
 .productInfo > select {
   padding: 1px;
   border: solid 1px lightgrey;
-  width: 70%;
+  width: 90%;
   border-radius: 5px;
 }
 .productInfo > input {
@@ -353,7 +350,7 @@ input::-webkit-inner-spin-button {
 }
 
 .contactDetailsCont > .contactHeading {
-  text-align: center;
+  text-align: left;
   font-size: 40px;
   line-height: 1.5;
 }

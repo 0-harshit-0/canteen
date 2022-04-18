@@ -1,6 +1,5 @@
 import React from 'react';
 import {Nav} from '../components/header.js';
-import {Cart} from '../components/cart.js';
 
 
 function Map(props) {
@@ -66,7 +65,7 @@ function ContactItems(props) {
         }
         <section className="contactData">
         {
-          props.data.map((z,i) => <span><a key={z} href={props.link[i]}>{z}</a></span>)
+          props.data.map((z,i) => <span key={i*Math.random()*999}><a href={props.link[i]}>{z}</a></span>)
         }
         </section>
       </div>
@@ -79,7 +78,7 @@ function Contactdetails(props) {
       <h2 className="contactHeading">Reach out to us</h2>
       <br />
       {
-        contactJSON.map((z, i) => <ContactItems key={i} svg={z.svg} data={z.data} link={z.link} />)
+        contactJSON.map((z,i) => <ContactItems key={i*Math.random()*999} svg={z.svg} data={z.data} link={z.link} />)
       }
     </>
   );
@@ -95,7 +94,6 @@ function Contact(props) {
           <Contactdetails />
         </section>
       </div>
-      <Cart cartLen={props.count} />
     </>
   );
 }
