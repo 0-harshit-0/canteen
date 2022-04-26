@@ -18,7 +18,7 @@ function Nav(props) {
 		<>
 		<header className="containers">
 			<Link to="/">
-				Canteen
+				Cafeteria
 			</Link>
 			<nav>
 				{

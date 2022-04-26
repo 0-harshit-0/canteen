@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import ReactDOM from 'react-dom/client';
-import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {HashRouter, Routes, Route} from "react-router-dom";
 import './index.css';
 
 import {Home} from './pages/home.js';
@@ -13,13 +13,13 @@ function App(props) {
   return (
     <>
       <Cart json={json.cartData} setJson={setJson} />
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route index element={<Home json={json.cartData} setJson={setJson} />} />
           <Route path="contact" element={<Contact />} />
           <Route path="order" element={<Order />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </>
   );
 }

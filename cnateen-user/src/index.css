@@ -224,10 +224,9 @@ header > nav > a {
   font-size: 1.4rem;
 }
 
-
 .productCont {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, .2fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, .2fr));
   gap: 15px;
 }
 
@@ -235,21 +234,25 @@ header > nav > a {
   border: solid 1px lightgrey;
   padding: 5%;
   border-radius: 10px;
-  cursor: pointer;
+
+  display: grid;
+  grid-template-rows: .3fr .7fr;
 }
 
 .productImg > img {
   border-radius: 10px;
+  aspect-ratio: 1;
 }
 .productInfo {
   display: grid;
-  grid-template-rows: .2fr .4fr .2fr .2fr;
+  grid-template-rows: .2fr .9fr .2fr .2fr;
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
 
-  margin-block-start: 2%;
+  margin-block-start: 4%;
   font-size: 100%;
   padding-inline: 3%;
+  height: 100%;
 }
 .productInfo > h3 {
   grid-column: 1 / span 2;
@@ -258,37 +261,45 @@ header > nav > a {
 }
 .productInfo > p {
   grid-column: 1 / span 2;
-  word-break: break-all;
+
   font-size: 1.4em;
-  margin-block-end: 5%;
+  margin-block-end: 10%;
+  
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow-y: hidden;
+
+  height: 100%;
 }
 
-.productInfo > select {
-  padding: 1px;
-  border: solid 1px lightgrey;
-  width: 90%;
-  border-radius: 5px;
-}
-.productInfo > input {
-  padding: 0;
-  padding-inline-start: 5px;
-  border: solid 1px lightgrey;
-  justify-self: end;
-  width: 60%;
-  border-radius: 5px;
-}
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  opacity: 1;
-}
-
-.productInfo > button {
+.productInfo > .productsPrice {
   grid-column: 1 / span 2;
+  display: flex;
+  justify-content: space-between;
+
+  font-size: 1.4em;
+}
+
+.productInfo > .productsOptions {
+  grid-column: 1 / span 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-block-start: 10px;
+}
+.productsOptions > .instockLabel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 40%;
+}
+.productsOptions > button {
   border-radius: 5px;
   padding-block: 2%;
   border: solid 1px lightgrey;
 }
+
 
 /* -------------order------------------ */
 .orderCont {

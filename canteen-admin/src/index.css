@@ -215,7 +215,7 @@ header > nav > a {
   background: transparent;
 }
 /* -----------------------pages--------------------------- */
-/* -----=------searchBar---------------- */
+/* ------------searchBar---------------- */
 .searchBarCont {
   display: flex;
   column-gap: 2%;
@@ -289,7 +289,9 @@ header > nav > a {
   border: solid 1px lightgrey;
   padding: 5%;
   border-radius: 10px;
-  cursor: pointer;
+
+  display: grid;
+  grid-template-rows: .3fr .7fr;
 }
 
 .productImg > img {
@@ -298,13 +300,14 @@ header > nav > a {
 }
 .productInfo {
   display: grid;
-  grid-template-rows: .2fr .4fr .2fr .2fr;
+  grid-template-rows: .2fr .9fr .2fr .2fr;
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
 
-  margin-block-start: 2%;
+  margin-block-start: 4%;
   font-size: 100%;
   padding-inline: 3%;
+  height: 100%;
 }
 .productInfo > h3 {
   grid-column: 1 / span 2;
@@ -313,15 +316,24 @@ header > nav > a {
 }
 .productInfo > p {
   grid-column: 1 / span 2;
-  word-break: break-all;
+
   font-size: 1.4em;
-  margin-block-end: 5%;
+  margin-block-end: 10%;
+  
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow-y: hidden;
+
+  height: 100%;
 }
 
 .productInfo > .productsPrice {
   grid-column: 1 / span 2;
   display: flex;
   justify-content: space-between;
+
+  font-size: 1.4em;
 }
 
 .productInfo > .productsOptions {

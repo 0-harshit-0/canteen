@@ -101,7 +101,7 @@ function ProductCard(props) {
         <div className="productsOptions">
           <label className="instockLabel">
             In-Stock:
-            <input className="instock" type="checkbox" defaultChecked={props.inStock === "1"? true: false} name="instock" onClick={(e)=>{updateItem(props.id, e.target.checked?"1":"0")}} />
+            <input className="bi instock" type="checkbox" defaultChecked={props.inStock === "1"? true: false} name="instock" onClick={(e)=>{updateItem(props.id, e.target.checked?"1":"0")}} />
           </label>
           <button className="bi" onClick={()=>{delItem(props.id)}}>
             REMOVE ITEM

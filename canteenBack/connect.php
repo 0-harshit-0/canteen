@@ -42,6 +42,7 @@ function createOrderTable() {
 	    quantity int UNSIGNED NOT NULL,
 	    orderID int UNSIGNED NOT null,
 	    orderType text NOT null,
+	    orderStatus text NOT null,
 	    FOREIGN KEY (orderID) REFERENCES Items(id)
 	)";
 	if ($GLOBALS["conn"]->query($sql) === TRUE) {
