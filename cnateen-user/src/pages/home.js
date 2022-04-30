@@ -23,7 +23,7 @@ function ProductCard(props) {
           <option value="half">half: ₹{props.price[0]}</option>
           <option value="full">full: ₹{props.price[1]}</option>
         </select>*/}
-        <span className="productSize">Price: ₹{props.price[0]}</span>
+        <span className="productsPrice">Price: ₹{props.price[0]}</span>
         <input defaultValue="0" min="0" type="number" name="count" className="productQuant" />
         <button className="bi" onClick=
         {
@@ -62,7 +62,7 @@ function Products(props) {
 
   useEffect(() => {
     if(productsData.fetching) {
-      fetch("http://localhost/canteenBack/getItems.php?inStock=true").then(res=>{
+      fetch("https://shinto-tune.000webhostapp.com/getItems.php?inStock=true").then(res=>{
         res.json().then(d=> {
           setProductsData({fetching: false, items: d});
         })
@@ -70,13 +70,18 @@ function Products(props) {
     }
   });
   let temp = productsData.items;
+  /*if(props.searchQuery === "") {
+    se = "abcdefghijklmnopqrstuvwxyz";
+  }else {
+    se = props.searchQuery;
+  }*/
   return(
     <div className="containers productCont">
       {
-
-        temp.map((z, i) => {
-          if(z.name.match(new RegExp(props.searchQuery, "i"))) {
-            return <ProductCard key={i} n={i} id={z.id} base64={z.img} name={z.name} des={z.description} price={[z.halfPrice]}
+        temp.map((z, j) => {
+          let tempReg = z.name.match(new RegExp(props.searchQuery, "i"));
+          if(tempReg) {
+            return <ProductCard key={j} n={j} id={z.id} base64={z.img} name={z.name} des={z.description} price={[z.halfPrice]}
                     inStock={z.inStock} json={props.json} setJson={props.setJson} />
           }
           return '';

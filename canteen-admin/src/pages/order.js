@@ -2,32 +2,46 @@ import React, {useState, useEffect} from 'react';
 import {Nav} from '../components/header.js';
 
 
-function OrderCard(props) {
-  const [status, setStatus] = useState("Start Working");
+function OrderCard(props) {/*
+  const [status, setStatus] = useState("Start Working");*/
 
   const delOrder = async (id) => {
-    if (status !== "Delete Order") return 0;
-    let res = await fetch(`http://localhost/canteenBack/removeOrder.php?id=${id}`);
+    if (props.status !== "Order Ready") return 0;
+    let res = await fetch(`https://shinto-tune.000webhostapp.com/removeOrder.php?id=${id}`);
+    let resjson = await res.text();
+    console.log(resjson);
+  };
+  const updateOrder = async (id, value) => {
+    let res = await fetch(`https://shinto-tune.000webhostapp.com/updateOrders.php?id=${id}&value=${value}`);
     let resjson = await res.text();
     console.log(resjson);
   };
 
   const checkStatus = (id) => {
-    switch (status) {
-      case "Start Working":
-        if(window.confirm("do you want to start working?")) setStatus("Order Ready");
+    switch (props.status) {
+      case "In Queue":
+        if(window.confirm("do you want to start working?")) {
+          updateOrder(id, "Getting Ready");
+          //setStatus("Order Ready");
+        }
+        break;
+      case "Getting Ready":
+        if(window.confirm("you sure order is complete?")) {
+          updateOrder(id, "Order Ready");
+          //setStatus("Delete Order");
+        }
         break;
       case "Order Ready":
-        if(window.confirm("you sure order is complete?")) setStatus("Delete Order");
-        break;
-      case "Delete Order":
         if(window.confirm("you sure order is delivered?")) {
           delOrder(id);
           window.location.reload();
         }
-        
+        break;
+      default:
+        window.location.reload();
         break;
     }
+    window.location.reload();
   }
 
   return(
@@ -39,10 +53,11 @@ function OrderCard(props) {
         <span>{props.list}</span>
         <span>Quantity: {props.quant}</span>
         <span>Total: {props.price*props.quant}₹</span>
+        <span>Token: {props.id}</span>
       </section>
       <section className="orderStatus">
         <button id="deleteOrder" className="bi" onClick={()=> {checkStatus(props.id)}}>
-          {status}
+          {props.status}
         </button>
       </section>
     </div>
@@ -54,7 +69,7 @@ function OrderCont(props) {
 
   useEffect(() => {
     if(ordersData.fetching) {
-      fetch("http://localhost/canteenBack/getOrders.php").then(res=>{
+      fetch("https://shinto-tune.000webhostapp.com/getOrders.php").then(res=>{
         res.json().then(d=> {
           //console.log(d)
           setOrdersData({fetching: false, items: d});
@@ -67,7 +82,7 @@ function OrderCont(props) {
   return(
     <div className="orderCont containers">
     {
-      temp.map((z,i)=> <OrderCard key={i} id={z.id} img={z.img} list={z.name} price={z.halfPrice} quant={z.quantity} />)
+      temp.map((z,i)=> <OrderCard key={i} id={z.id} img={z.img} list={z.name} price={z.halfPrice} quant={z.quantity} status={z.orderStatus} />)
     }
     </div>
   )

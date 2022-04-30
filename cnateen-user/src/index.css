@@ -86,6 +86,56 @@ header > nav > a {
   font-size: 1.8rem;
 }
 
+/* --------------chat--------------- */
+.chatCont {
+  padding: 1%;
+  background: white;
+  border: solid 1px lightgrey;
+  border-radius: 7px;
+  width: 20%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.chatDialogue {
+  display: grid;
+  grid-template-rows: repeat(auto-fit, 1fr);
+  align-items: center;
+  
+  overflow-y: scroll;
+  padding-block: 2%;
+  padding-inline-end: 2%;
+  height: 200px;
+}
+
+.chats {
+  color: white;
+  width: max-content;
+  margin-block-end: 1%;
+}
+.recv {
+  background: rgba(0, 40, 200, 0.7);
+  border-radius: 7px;
+  padding-block: 3%;
+  padding-inline: 6%;
+
+  justify-self: end;
+}
+.sent {
+  background: rgba(0, 200, 40, 0.7);
+  border-radius: 7px;
+  padding-block: 3%;
+  padding-inline: 6%;
+}
+
+.chatOptions {
+  display: flex;
+}
+.chatOptions > .sendBtn {
+  width: max-content;
+}
 /* --------------cart--------------- */
 .cartButton {
   border: 0;
@@ -274,32 +324,38 @@ header > nav > a {
 }
 
 .productInfo > .productsPrice {
-  grid-column: 1 / span 2;
   display: flex;
   justify-content: space-between;
 
   font-size: 1.4em;
 }
-
-.productInfo > .productsOptions {
+.productInfo > select {
+  padding: 1px;
+  border: solid 1px lightgrey;
+  width: 90%;
+  border-radius: 5px;
+}
+.productInfo > input {
+  padding: 0;
+  padding-inline-start: 5px;
+  border: solid 1px lightgrey;
+  justify-self: end;
+  width: 60%;
+  border-radius: 5px;
+  height: 100%;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  opacity: 1;
+}
+.productInfo > button {
   grid-column: 1 / span 2;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+
   margin-block-start: 10px;
-}
-.productsOptions > .instockLabel {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 40%;
-}
-.productsOptions > button {
   border-radius: 5px;
   padding-block: 2%;
   border: solid 1px lightgrey;
 }
-
 
 /* -------------order------------------ */
 .orderCont {
@@ -308,7 +364,7 @@ header > nav > a {
 }
 .orderCont > .orderCard {
   display: grid;
-  grid-template-columns: .1fr .8fr .1fr;
+  grid-template-columns: .1fr .7fr .15fr;
   align-items: center;
   justify-content: space-between;
 
@@ -338,7 +394,14 @@ header > nav > a {
 
 .orderCard > .orderStatus {
   display: flex;
+  justify-content: space-between;
   width: 100%;
+}
+.orderStatus svg {
+  border: 0;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 7px;
+  padding: 3%;
 }
 .orderStatus span {
   border: 0;
@@ -388,4 +451,15 @@ header > nav > a {
 }
 .contactitem > .contactData > span:nth-child(2) {
   margin-inline-start: 5%;
+}
+
+/* =============pay================ */
+.qrcode {
+  width: 30%;
+  position: absolute;
+  top: calc(50% - 30%);
+  left: calc(50% - 15%);
+}
+.qrcode img {
+  aspect-ratio: 1;
 }

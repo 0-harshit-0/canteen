@@ -23,7 +23,7 @@ function AddItemForm(props) {
     var formData = new FormData();
     formData.append('insertData', JSON.stringify(itemData));
 
-    fetch("http://localhost/canteenBack/addItem.php", {
+    fetch("http://shinto-tune.000webhostapp.com/addItem.php", {
       method: "post",
       body: formData
     }).then((res)=> {
@@ -35,7 +35,7 @@ function AddItemForm(props) {
 
   return (
     <div className={props.visible}>
-      <form id="addItemForm" action="http://localhost/canteenBack/addItem.php" method="post">
+      <form id="addItemForm">
         <input type="file" name="image" onChange={(e)=> {encodeImageFileAsURL(e.target)}} />
         <input className="formFields" type="text" name="itemname" id="itemname" placeholder="Item Name" />
         <textarea className="formFields" name="description" id="description" placeholder="Description"></textarea>
@@ -47,7 +47,7 @@ function AddItemForm(props) {
             const fields = document.querySelectorAll(".formFields");
             addItem(fields[0].value, fields[1].value, fields[2].value, fields[3].value);
             props.setDis(props.dis==="hiddenCart"? "addItemFormCont":"hiddenCart");
-            window.location.reload();
+            //window.location.reload();
           }
         }>SUBMIT</button>
       </form>
@@ -76,12 +76,12 @@ function SearchBar(props) {
 
 function ProductCard(props) {
   const delItem = async (id) => {
-    let res = await fetch(`http://localhost/canteenBack/removeItem.php?id=${id}`);
+    let res = await fetch(`https://shinto-tune.000webhostapp.com/removeItem.php?id=${id}`);
     let resjson = await res.text();
     console.log(resjson);
   };
   const updateItem = async (id, value) => {
-    let res = await fetch(`http://localhost/canteenBack/updateItems.php?id=${id}&value=${value}`);
+    let res = await fetch(`https://shinto-tune.000webhostapp.com/updateItems.php?id=${id}&value=${value}`);
     let resjson = await res.text();
     console.log(resjson);
   };
@@ -101,7 +101,7 @@ function ProductCard(props) {
         <div className="productsOptions">
           <label className="instockLabel">
             In-Stock:
-            <input className="bi instock" type="checkbox" defaultChecked={props.inStock === "1"? true: false} name="instock" onClick={(e)=>{updateItem(props.id, e.target.checked?"1":"0")}} />
+            <input className="bi instock" type="checkbox" defaultChecked={props.inStock === "1"? true: false} name="instock" onClick={(e)=>{updateItem(props.id, e.target.checked?true:false)}} />
           </label>
           <button className="bi" onClick={()=>{delItem(props.id)}}>
             REMOVE ITEM
@@ -116,7 +116,7 @@ function Products(props) {
 
   useEffect(() => {
     if(productsData.fetching) {
-      fetch("http://localhost/canteenBack/getItems.php?inStock=false").then(res=>{
+      fetch("https://shinto-tune.000webhostapp.com/getItems.php?inStock=false").then(res=>{
         res.json().then(d=> {
           setProductsData({fetching: false, items: d});
         })
