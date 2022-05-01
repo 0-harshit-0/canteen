@@ -14,6 +14,7 @@ function App(props) {
   const [json, setJson] = useState({cartData:[]});
   return (
     <>
+      <Chat />
       <Cart json={json.cartData} setJson={setJson} />
       <HashRouter>
         <Routes>
@@ -23,7 +24,6 @@ function App(props) {
           <Route path="pay" element={<Pay />} />
         </Routes>
       </HashRouter>
-      <Chat />
     </>
   );
 }

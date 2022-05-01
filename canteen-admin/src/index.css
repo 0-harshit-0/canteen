@@ -84,7 +84,56 @@ header > nav > a {
   margin-inline-start: 50px;
   font-size: 1.8rem;
 }
+/* --------------chat--------------- */
+.chatCont {
+  padding: 1%;
+  background: white;
+  border: solid 1px lightgrey;
+  border-radius: 7px;
+  width: 20%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
+.chatDialogue {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1%;
+  
+  overflow-y: scroll;
+  padding-block: 2%;
+  padding-inline-end: 2%;
+  height: 200px;
+}
+
+.chats {
+  color: white;
+  width: max-content;
+}
+.recv {
+  background: rgba(0, 40, 200, 0.7);
+  border-radius: 7px;
+  padding-block: 3%;
+  padding-inline: 6%;
+
+  justify-self: end;
+}
+.sent {
+  background: rgba(0, 200, 40, 0.7);
+  border-radius: 7px;
+  padding-block: 3%;
+  padding-inline: 6%;
+}
+
+.chatOptions {
+  display: flex;
+}
+.chatOptions > .sendBtn {
+  width: max-content;
+}
 /* --------------cart--------------- */
 .cartButton {
   border: 0;
