@@ -6,13 +6,11 @@ function getItems() {
 	$result = $GLOBALS["conn"]->query($sql);
 	$a=array();
 	
-	if ($result->num_rows > 0) {
+	if ($result && $result->num_rows > 0) {
 	  // output data of each row
 	  while($row = $result->fetch_assoc()) {
 	    array_push($a, $row);
 	  }
-	} else {
-	  echo json_encode([]);
 	}
 	echo json_encode($a);
 }
@@ -21,19 +19,19 @@ function getItemsStock() {
 	$result = $GLOBALS["conn"]->query($sql);
 	$a=array();
 	
-	if ($result->num_rows > 0) {
+	if ($result && $result->num_rows > 0) {
 	  // output data of each row
 	  while($row = $result->fetch_assoc()) {
 	    array_push($a, $row);
 	  }
-	} else {
-	  echo json_encode([]);
 	}
 	echo json_encode($a);
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
+	
 	sqlConn();
+	
 	if($_GET["inStock"] == "true") {
 		getItemsStock();
 	}else {

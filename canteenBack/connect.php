@@ -42,7 +42,6 @@ function createOrderTable() {
 	    quantity int UNSIGNED NOT NULL,
 	    orderID int UNSIGNED NOT null,
 	    orderType text NOT null,
-	    orderStatus text NOT null,
 	    FOREIGN KEY (orderID) REFERENCES Items(id)
 	)";
 	if ($GLOBALS["conn"]->query($sql) === TRUE) {
@@ -51,4 +50,18 @@ function createOrderTable() {
 	  echo "Error creating table: ". $GLOBALS["conn"]->error;
 	}
 }
+
+function createChatTable() {
+	$sql = "CREATE TABLE Chats (
+	    id int UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	    fr text NOT null,
+	    msg text NOT null
+	)";
+	if ($GLOBALS["conn"]->query($sql) === TRUE) {
+	  echo "Table Items created successfully";
+	} else {
+	  echo "Error creating table: ". $GLOBALS["conn"]->error;
+	}
+}
+
 ?>

@@ -8,7 +8,7 @@ function del($n) {
 	if ($GLOBALS["conn"]->query($sql) === TRUE) {
 	  echo "Record deleted successfully";
 	} else {
-	  echo "Error deleting record: " . $conn->error;
+	  echo "Error deleting record: " . $GLOBALS["conn"]->error;
 	}
 }
 if ($_SERVER["REQUEST_METHOD"] == "GET") {

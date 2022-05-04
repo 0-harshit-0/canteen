@@ -87,16 +87,53 @@ header > nav > a {
 }
 
 /* --------------chat--------------- */
+.chatButton {
+  border: 0;
+  position: fixed;
+  top: calc(90% - 60px);
+  left: calc(100% - 70px);
+  height: 50px;
+  aspect-ratio: 1;
+  background: transparent;
+}
+.bi-chat-left-dots {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  padding: 10px;
+  border-radius: 15px;
+  background: orange;
+}
+.chatCount {
+  position: absolute;
+  top: -20%;
+  left: calc(97% - 20px);
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 100%;
+  background: orange;
+  color: black;
+  font-weight: bold;
+  height: 28px;
+  aspect-ratio: 1;
+}
+
+.hiddenChat {
+  display: none;
+}
 .chatCont {
   padding: 1%;
   background: white;
   border: solid 1px lightgrey;
   border-radius: 7px;
   width: 20%;
-  position: absolute;
+  position: fixed;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  left: 80%;
+  transform: translate(0%, -50%);
 }
 
 .chatDialogue {
@@ -108,7 +145,7 @@ header > nav > a {
   overflow-y: scroll;
   padding-block: 2%;
   padding-inline-end: 2%;
-  height: 200px;
+  height: 300px;
 }
 
 .chats {
@@ -120,21 +157,21 @@ header > nav > a {
   border-radius: 7px;
   padding-block: 3%;
   padding-inline: 6%;
-
-  justify-self: end;
+  margin-inline-start: auto;
 }
 .sent {
   background: rgba(0, 200, 40, 0.7);
   border-radius: 7px;
   padding-block: 3%;
   padding-inline: 6%;
+  margin-inline-end: auto;
 }
 
 .chatOptions {
   display: flex;
 }
 .chatOptions > .sendBtn {
-  width: max-content;
+  width: 100%;
 }
 /* --------------cart--------------- */
 .cartButton {

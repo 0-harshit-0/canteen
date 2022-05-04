@@ -2,7 +2,7 @@
 include 'connect.php';
 
 function getOrders() {
-	$sql = "SELECT img, name, halfPrice, quantity, orderType FROM Items INNER JOIN Orders ON Items.id = Orders.orderID";
+	$sql = "SELECT * FROM Items INNER JOIN Orders ON Items.id = Orders.orderID";
 
 	$result = $GLOBALS["conn"]->query($sql);
 	$a=array();

@@ -18,16 +18,34 @@ function ChatBox(props) {
   );
 }
 function ChatOption(props) {
+  const addItem = (m) => {
+    let itemData = {
+      from: "user",
+      msg: m
+    };
+    var formData = new FormData();
+    formData.append('msgs', JSON.stringify(itemData));
+
+    fetch("http://localhost/canteenBack/websocket.php", {
+      method: "post",
+      body: formData
+    }).then((res)=> {
+      res.text().then(d=> {
+        console.log(d)
+      });
+    });
+  };
+
   return (
     <>
       <div className="chatOptions">
         <input type="text" name="text" id="textBox" />
         <button className="sendBtn bi" onClick={
           ()=>{
-            clearInterval(props.inter);
-            let temp = props.chatJSON.concat([]);
-            temp.push({type:"sent", msg:document.querySelector("#textBox").value});
-            props.setChat(temp);
+            let v = document.querySelector("#textBox").value;
+            addItem(v);
+            props.getChat(v);
+            document.querySelector("#textBox").value = '';
           }
         }>send</button>
       </div>
@@ -36,19 +54,51 @@ function ChatOption(props) {
 }
 function Chat() {
   const [chatJSON, setChat] = useState([{type:"recv", msg:"Hello, how can we help you?"}]);
+  const [dis, setDis] = useState("hiddenChat");
+
+  const getChat = (m) => {
+    clearTimeout(inter);
+    let temp = chatJSON.concat([]);
+    if (m) {
+      temp.push({type:"sent", msg:m});
+    }
+    fetch("http://localhost/canteenBack/websocket.php?from=user").then((res)=> {
+      res.json().then(d=> {
+        //console.log(d);
+        if(!d) return;
+        //if(d.no === temp[temp.length-1].no) return;
+        d.forEach(z=> {
+          /*z.from === "admin" && */temp.push({type:"recv", msg:z.msg});
+        })
+        setChat(temp);
+      });
+    });
+  }
 
   let inter = setTimeout(()=> {
-    let temp = chatJSON.concat([]);
-    temp.push({type:"recv", msg:"recieved"});
-    setChat(temp);
-  }, 30000);
+    getChat();
+    //temp.push({type:"recv", msg:"recieved"});
+  }, 5000);
 
   return (
     <>
-      <div className="chatCont">
+      <div className={dis}>
         <ChatBox chatJSON={chatJSON} />
-        <ChatOption chatJSON={chatJSON} setChat={setChat} inter={inter} />
+        <ChatOption getChat={getChat} />
       </div>
+      <button className="chatButton" onClick=
+        {
+          ()=> {
+            clearTimeout(inter);
+            setDis(dis==="hiddenChat"? "chatCont":"hiddenChat")
+          }
+        }>
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" className="bi bi-chat-left-dots" viewBox="0 0 16 16">
+          <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+          <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+        </svg>{/*
+        <span className="chatCount">{len}</span>*/}
+      </button>
     </>
   );
 }
