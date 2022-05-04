@@ -26,7 +26,7 @@ function ChatOption(props) {
     var formData = new FormData();
     formData.append('msgs', JSON.stringify(itemData));
 
-    fetch("http://localhost/canteenBack/websocket.php", {
+    fetch("https://shinto-tune.000webhostapp.com/websocket.php", {
       method: "post",
       body: formData
     }).then((res)=> {
@@ -62,13 +62,11 @@ function Chat() {
     if (m) {
       temp.push({type:"sent", msg:m});
     }
-    fetch("http://localhost/canteenBack/websocket.php?from=admin").then((res)=> {
+    fetch("https://shinto-tune.000webhostapp.com/websocket.php?from=admin").then((res)=> {
       res.json().then(d=> {
-        //console.log(d);
         if(!d) return;
-        //if(d.no === temp[temp.length-1].no) return;
         d.forEach(z=> {
-          /*z.from === "user" && */temp.push({type:"recv", msg:z.msg});
+          temp.push({type:"recv", msg:z.msg});
         })
         setChat(temp);
       });

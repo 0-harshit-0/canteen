@@ -5,7 +5,7 @@ import {Nav} from '../components/header.js';
 function Map(props) {
   return (
     <>
-      <iframe title="map" id="mapContact" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1749.3261262407768!2d77.12370550846366!3d28.729936777895173!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d013f8a74f051%3A0x8a728f9fe6976d1b!2sGuru%20Nanak%20Dev%20Rohini%20Campus%20DSEU!5e0!3m2!1sen!2sin!4v1648022339674!5m2!1sen!2sin" width="500" height="400" allowFullScreen="" loading="lazy"></iframe>
+      <iframe title="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.3028002590268!2d77.09026581508236!3d28.620685582422478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d04afb8dbcfe1%3A0xaff19e718be2136b!2sMaharaja%20Surajmal%20Institute%20Of%20Technology!5e0!3m2!1sen!2sin!4v1651654609469!5m2!1sen!2sin" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </>
   );
 }
